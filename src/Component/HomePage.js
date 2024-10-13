@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CSS files/HomePage.css";
 import userProfile from "./../Assests/user_profile_image.png";
-import Travel_image_1 from "./../Assests/Travel_image_1.jpeg";
-import Travel_image_2 from "./../Assests/Travel_image_2.jpeg";
-import Travel_image_3 from "./../Assests/Travel_image_3.jpeg";
-import Nature_image from "./../Assests/Nature_image.jpeg";
+import Travel_image_1 from "./../Assests/Travel_image_1.webp";
+import Travel_image_2 from "./../Assests/Travel_image_2.webp";
+import Travel_image_3 from "./../Assests/Travel_image_3.webp";
+import Nature_image from "./../Assests/Nature_image.webp";
 import home from "./../Assests/home.png";
 import developer from "./../Assests/developer.png";
 import about from "./../Assests/about.png";
@@ -19,7 +19,7 @@ import Modal from "./Modal";
 
 // import Buiding_image from "./../Assests/Building_image.jpeg";
 import Search from "./../Assests/Search.png";
-import Voic from "./../Assests/Voic.png";
+import Voic from "./../Assests/google-voice.png";
 
 function HomePage() {
   const images = [Travel_image_1, Travel_image_2, Nature_image, Travel_image_3];

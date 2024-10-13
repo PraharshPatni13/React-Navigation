@@ -1,6 +1,6 @@
 @font-face {
   font-family: Poppins;
-  src: url("./../../Poppins-ExtraBold.ttf");
+  src: url("./../../Poppins-ExtraBold.woff2");
 }
 * {
   font-family: Poppins;
@@ -111,14 +111,13 @@ nav .logo .slide {
   padding: 5px 15px;
 }
 .search_bar .search_with_your_voic {
-  height: 60%;
-  width: 7%;
+  height: 55%;
+  width: 8%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  background-color:rgb(59, 59, 59);
   padding: 2px;
 }
 .search_bar .search_with_your_voic img {
