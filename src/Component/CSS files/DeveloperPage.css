@@ -1,0 +1,108 @@
+.center{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.center h2{
+    width: max-content;
+    position: relative;
+    font-size: clamp(1rem,3vw + 1rem, 4rem);
+    font-family: 'Courier New', Courier, monospace;
+    transition: all ease 0.5s;
+    cursor: pointer;
+    &::after,
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    &::before{
+        background-color: white;
+        animation: slide 6s steps(35) forwards;
+    }
+    &::after{
+        width: 0.3px;
+        animation: slide 6s steps(35) forwards,blink 0.50s infinite;
+        background-color: black;
+    }
+}
+h2:hover{
+    scale: 1.01;
+    border-radius: 5px;
+    padding: 0px 10px;
+    background-color: lightgrey;
+}
+@keyframes slide {  
+    to{
+        left: 100%;
+    }
+}
+@keyframes blink {  
+    to{
+        opacity: 0;
+    }
+}
+
+.informative_slider{
+    height: 30%;
+    width: 25%;
+    background-color: darkorchid;
+    justify-content: space-between;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    display: flex;
+    transform: translateX(-95%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    color: white;
+}
+.informative_slider .information{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    line-height: 1em;
+    font-size: 16px;
+    padding: 0px 0px 0px 5px;
+}
+.informative_slider .information h3 mark{
+    padding: 0px 5px;
+    background-color: white;
+}
+.informative_slider .information details{
+    font-size: 16px;
+    line-height: 1em;
+}
+.informative_slider .information details p{
+    font-size: 13px;
+    width: max-content;
+}
+.informative_slider .information details p span{
+    padding: 0px 5px;
+    background-color: lightyellow;
+    box-shadow: rgba(0, 0, 0, 0.189) 0px 2px 5px;
+    color: black;
+    margin-right: 5px;
+}
+.informative_slider .imageContainer{
+    height: 100%;
+    width: 5%;
+    background-color: lightgreen;
+    align-content: center;
+}
+.informative_slider .imageContainer:hover{
+    background-color: rgb(184, 231, 184);
+}
+.informative_slider img{ 
+    width: 95%;
+    align-self: center;
+}
