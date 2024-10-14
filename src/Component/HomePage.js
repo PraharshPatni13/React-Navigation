@@ -12,12 +12,10 @@ import developer from "./../Assests/developer.png";
 import about from "./../Assests/about.png";
 import data from "./../Data/data.json";
 import ProductLayout from "./../Component/ProductLayout";
-// import prev from "./../Assests/previous.png";
-// import next from "./../Assests/next.png";
+import Timer from "./Timer";
 import aside_profile from "./../Assests/aside_profile.png";
 import Modal from "./Modal";
 
-// import Buiding_image from "./../Assests/Building_image.jpeg";
 import Search from "./../Assests/Search.png";
 import Voic from "./../Assests/google-voice.png";
 
@@ -153,6 +151,7 @@ function HomePage() {
           </div>
         </div>
         <div className="user_profile_section">
+          <Timer />
           <img src={userProfile} alt="Profile"/>
           <div className="profile_hover">User Profile</div>
         </div>
