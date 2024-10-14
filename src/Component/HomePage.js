@@ -13,6 +13,7 @@ import about from "./../Assests/about.png";
 import data from "./../Data/data.json";
 import ProductLayout from "./../Component/ProductLayout";
 import Timer from "./Timer";
+
 import aside_profile from "./../Assests/aside_profile.png";
 import Modal from "./Modal";
 
@@ -33,50 +34,67 @@ function HomePage() {
   const [showPlaceholder, setShowplaceholder] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [backgroundColor, setBackgroundColor] = useState("");
+  // const [showColoPicker, setShowColorPicker] = useState(false);
   
   useEffect(() => {
+    const savedColor = localStorage.getItem('backgroundColor');
+    if(savedColor){
+      setBackgroundColor(savedColor)
+    }else{
+      console.log("color not found");
+    }
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, 4000);
     return () => clearInterval(interval);
-  },[images.length]);
+  }, [images.length]);
 
-
+  useEffect(() => {
+    localStorage.setItem('backgroundColor', backgroundColor); // Store the color
+  },[backgroundColor]);
+  
   const handleVoiceSearch = () => {
     setIsModalOpen(true);
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
-  
+
     recognition.onstart = () => {
       console.log("Voice recognition started. Speak into the microphone.");
     };
-  
+
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       setInputValue(transcript);
       setShowplaceholder(false);
       console.log("You said: ", transcript);
       setIsModalOpen(false);
-      window.open(`https://www.google.com/search?q=${encodeURIComponent(transcript)}`, '_blank');
+      window.open(
+        `https://www.google.com/search?q=${encodeURIComponent(transcript)}`,
+        "_blank"
+      );
     };
-  
+
     recognition.onerror = (event) => {
       console.error("Error occurred in recognition: ", event.error);
       if (event.error === "no-speech") {
         alert("No speech was detected. Please try again.");
       } else if (event.error === "audio-capture") {
-        alert("No microphone was found. Please ensure your microphone is connected.");
+        alert(
+          "No microphone was found. Please ensure your microphone is connected."
+        );
       } else if (event.error === "not-allowed") {
-        alert("Microphone access denied. Please allow access to the microphone.");
+        alert(
+          "Microphone access denied. Please allow access to the microphone."
+        );
       }
     };
-  
+
     recognition.start();
   };
-
 
   const handleClick = (e) => {
     if (inputValue === "") {
@@ -103,14 +121,28 @@ function HomePage() {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      window.open(`https://www.google.com/search?q=${encodeURIComponent(inputValue)}`, '_blank');
+      window.open(
+        `https://www.google.com/search?q=${encodeURIComponent(inputValue)}`,
+        "_blank"
+      );
     }
   };
+
+  const handleColorChnage = (event) => {
+    const newColor = event.target.value;
+    setBackgroundColor(newColor);
+    console.log("color updated successfully");
+    
+    // setShowColorPicker(false);
+  };
+  // const toggleShowColorPicker = () => {
+  //   setShowColorPicker(!showColoPicker);
+  // };
   const handleRedirect = (path) => {
     navigate(path);
   };
   return (
-    <>
+    <main>
       <nav>
         <div className="logo">
           {images.map((image, index) => (
@@ -141,23 +173,28 @@ function HomePage() {
               </div>
             )}
 
-            <div className="search_img_container" >
+            <div className="search_img_container">
               <img src={Search} alt="seach_icon" />
             </div>
           </div>
           <div className="search_with_your_voic">
-            <img src={Voic} className="test" alt="voic" onClick={handleVoiceSearch}/>
+            <img
+              src={Voic}
+              className="test"
+              alt="voic"
+              onClick={handleVoiceSearch}
+            />
             <div className="voice_hover">Search with Your Voic</div>
           </div>
         </div>
         <div className="user_profile_section">
           <Timer />
-          <img src={userProfile} alt="Profile"/>
+          <img src={userProfile} alt="Profile" />
           <div className="profile_hover">User Profile</div>
         </div>
       </nav>
       <div className="home_main_container">
-        <aside>
+        <aside style={{ backgroundColor}}>
           <div className="Home_div">
             <img src={home} alt="Home div" />
             <a href="/">Home</a>
@@ -180,13 +217,22 @@ function HomePage() {
             <img src={developer} alt="Profile div" />
             <a href="/developer">Developer</a>
           </div>
+
+          <div className="colorPicker">
+              <input
+                type="color"
+                onChange={handleColorChnage}
+                value={backgroundColor}
+              />
+          </div>
+
         </aside>
         <section className="provided_content">
-          <ProductLayout products = {data.data} />
+          <ProductLayout products={data.data} />
         </section>
       </div>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </>
+    </main>
   );
 }
 
