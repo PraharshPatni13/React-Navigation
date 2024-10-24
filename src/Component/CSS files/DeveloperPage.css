@@ -33,7 +33,7 @@
         background-color: black;
     }
 }
-h2:hover{
+.center h2:hover{
     scale: 1.01;
     border-radius: 5px;
     padding: 0px 10px;

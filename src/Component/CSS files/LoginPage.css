@@ -1,0 +1,105 @@
+.main-div {
+  height: 80vh;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+.main-div .photo-container {
+  height: 100%;
+  width: 40%;
+  background-color: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-div .photo-container img {
+  height: auto;
+  width: 100%;
+}
+.main-div .login-container {
+  height: 100%;
+  width: 60%;
+  background-color: rgb(163, 146, 180);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-div .login-container h1 {
+  text-align: center;
+  color: rgb(252, 251, 251);
+  text-shadow: 0px 2px 2px rgb(212, 106, 247);
+}
+
+.main-div .login-container form  {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main-div .login-container form div label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.main-div .login-container form div input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+.main-div .login-container form .password {
+    position: relative;
+    margin-bottom: 30px;
+}
+.main-div .login-container form .password .image {
+    height: 50%;
+    position: absolute;
+    top: 55%;
+    left: 85%;
+}
+.main-div .login-container form .password .image img {
+    height: 65%;
+}
+.main-div .login-container form .password .image img:hover{
+    cursor: pointer;
+}
+.main-div .login-container input:focus {
+    outline: none;
+}
+
+.main-div .login-container button {
+  padding: 5px 40px;
+  width: max-content;
+  align-self: center;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+
+.main-div .login-container button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* for register page */
+
+.link_for_register{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
